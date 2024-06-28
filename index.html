@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>BallGameProject</title>
+    <link rel="shortcut icon" href="Ball.png" type="image/x-icon">
+    <style>
+       
+        html,body{
+            background-color: black;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0; 
+            border: solid  white;
+            border-width: 3px;
+            display:block;
+            box-sizing: border-box;
+        }
+       
+        #ball{
+            height: 50px;
+            position: absolute; 
+            border: 1px solid white ;
+            border-radius: 55px;
+        }
+        section{
+            margin: 15px 20px;
+        }
+        section button{
+            padding: 5px 15px;
+            background-color: rgb(233, 166, 43);
+            border: solid white;
+            border-radius: 4px;
+        }
+        section button:hover{
+            color: azure;
+            padding: 4px 10px;
+            background-color: brown;
+        }
+    </style>
+    </head>
+    <body onresize="resize()">
+        <section>
+            <button  onclick="f1()">Start</button>
+            <button  onclick="f2()">Stop</button>
+            <button  onclick="f3()">Reset</button>
+        </section>
+        <div id="main" >
+            <img id="ball"  src="Ball.png" alt="">
+        </div>
+    </body>
+    <script>
+        const ball = document.getElementById("ball");
+        const main =document.getElementById("main");
+        var x = 6;
+        var y = 65;
+        let xSpeed = 3;
+        let ySpeed = 3;
+        var w=innerWidth ;
+        var h=innerHeight ;
+        var i;
+        
+        
+        function f1(){
+            clearInterval(i);
+            i=setInterval(() => {
+                x += xSpeed;
+                y += ySpeed;
+                if (x + 50 > w || x < 0) {
+                    xSpeed = -xSpeed;
+                }
+                if (y + 50 > h || y < 0) {
+                    ySpeed = -ySpeed;
+                }
+                ball.style.left = x + "px";
+                ball.style.top = y + "px";
+            }); 
+        } 
+        function f2(){
+            clearInterval(i); 
+        }
+        function f3(){
+            clearInterval(i);
+            x=6;
+            y=65;
+            ball.style.left = x + "px";
+            ball.style.top = y + "px";
+            
+        }
+        function resize(){
+            var w=innerWidth ;
+            var h=innerHeight ;
+            location.reload();
+        }
+        
+    </script>
+</html>
